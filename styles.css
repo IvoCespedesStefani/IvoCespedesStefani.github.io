@@ -1,0 +1,50 @@
+/* Fondo general */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: #FFA07A;
+  color: #333;
+}
+
+/* Contenedor principal */
+.container {
+  background-color: #FFE4B5; 
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Título */
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0056b3;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Subtítulo */
+.subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* Cada línea de ejemplo */
+.line {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Opcional: resaltar valores si los envuelves en <span class="result"> en Elm */
+.result {
+  color: #00796b;
+  font-weight: 500;
+  font-family: monospace;
+}
