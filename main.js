@@ -1,18 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Main</title>
-  <style>body { padding: 0; margin: 0; }</style>
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
-<pre id="elm"></pre>
-
-<script>
-try {
 (function(scope){
 'use strict';
 
@@ -5195,6 +5180,9 @@ var $elm$browser$Browser$sandbox = function (impl) {
 			view: impl.view
 		});
 };
+var $author$project$Main$boolStr = function (b) {
+	return b ? 'Sí' : 'No';
+};
 var $elm$html$Html$br = _VirtualDom_node('br');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -5205,19 +5193,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$integrantes = A2(
-	$elm$html$Html$div,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('subtitle')
-		]),
-	_List_fromArray(
-		[
-			$elm$html$Html$text('Integrantes: Ivo Cespedes Stefani, Daniela Teresita Recalde, Micaela Nataly Pawlizki, Candela Reck')
-		]));
 var $elm$core$List$append = F2(
 	function (xs, ys) {
 		if (!ys.b) {
@@ -5234,6 +5209,28 @@ var $elm$core$List$concatMap = F2(
 		return $elm$core$List$concat(
 			A2($elm$core$List$map, f, list));
 	});
+var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$core$List$drop = F2(
+	function (n, list) {
+		drop:
+		while (true) {
+			if (n <= 0) {
+				return list;
+			} else {
+				if (!list.b) {
+					return list;
+				} else {
+					var x = list.a;
+					var xs = list.b;
+					var $temp$n = n - 1,
+						$temp$list = xs;
+					n = $temp$n;
+					list = $temp$list;
+					continue drop;
+				}
+			}
+		}
+	});
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
 		return A3(
@@ -5245,8 +5242,66 @@ var $elm$core$List$filter = F2(
 			_List_Nil,
 			list);
 	});
+var $elm$core$List$head = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return $elm$core$Maybe$Just(x);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Main$integrantes = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('subtitle')
+		]),
+	_List_fromArray(
+		[
+			$elm$html$Html$text('Integrantes: Ivo Cespedes Stefani, Daniela Teresita Recalde, Micaela Nataly Pawlizki, Candela Reck')
+		]));
+var $elm$core$List$isEmpty = function (xs) {
+	if (!xs.b) {
+		return true;
+	} else {
+		return false;
+	}
+};
 var $author$project$Main$lista = _List_fromArray(
 	[1, 2, 3, 4, 5]);
+var $elm$core$List$any = F2(
+	function (isOkay, list) {
+		any:
+		while (true) {
+			if (!list.b) {
+				return false;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (isOkay(x)) {
+					return true;
+				} else {
+					var $temp$isOkay = isOkay,
+						$temp$list = xs;
+					isOkay = $temp$isOkay;
+					list = $temp$list;
+					continue any;
+				}
+			}
+		}
+	});
+var $elm$core$List$member = F2(
+	function (x, xs) {
+		return A2(
+			$elm$core$List$any,
+			function (a) {
+				return _Utils_eq(a, x);
+			},
+			xs);
+	});
 var $elm$core$List$partition = F2(
 	function (pred, list) {
 		var step = F2(
@@ -5288,144 +5343,6 @@ var $author$project$Main$seccion = F2(
 							$elm$html$Html$text(' → ' + valor)
 						]))
 				]));
-	});
-var $elm$core$Debug$toString = _Debug_toString;
-var $author$project$Main$seccionesAvanzadas = _List_fromArray(
-	[
-		A2(
-		$author$project$Main$seccion,
-		'🧪 List.filter (>2)',
-		$elm$core$Debug$toString(
-			A2(
-				$elm$core$List$filter,
-				function (x) {
-					return x > 2;
-				},
-				$author$project$Main$lista)) + ' — Filtra mayores a 2'),
-		A2(
-		$author$project$Main$seccion,
-		'🧪 List.map (*2)',
-		$elm$core$Debug$toString(
-			A2(
-				$elm$core$List$map,
-				function (x) {
-					return x * 2;
-				},
-				$author$project$Main$lista)) + ' — Multiplica cada uno por 2'),
-		A2(
-		$author$project$Main$seccion,
-		'🧪 List.indexedMap (i + x)',
-		$elm$core$Debug$toString(
-			A2(
-				$elm$core$List$indexedMap,
-				F2(
-					function (i, x) {
-						return i + x;
-					}),
-				$author$project$Main$lista)) + ' — Suma índice y valor'),
-		A2(
-		$author$project$Main$seccion,
-		'🧪 List.partition (>3)',
-		$elm$core$Debug$toString(
-			A2(
-				$elm$core$List$partition,
-				function (x) {
-					return x > 3;
-				},
-				$author$project$Main$lista)) + ' — Separa mayores y menores a 3'),
-		A2(
-		$author$project$Main$seccion,
-		'🧪 List.concat [[1,2],[3,4]]',
-		$elm$core$Debug$toString(
-			$elm$core$List$concat(
-				_List_fromArray(
-					[
-						_List_fromArray(
-						[1, 2]),
-						_List_fromArray(
-						[3, 4])
-					]))) + ' — Une sublistas'),
-		A2(
-		$author$project$Main$seccion,
-		'🧪 List.concatMap duplicar',
-		$elm$core$Debug$toString(
-			A2(
-				$elm$core$List$concatMap,
-				function (x) {
-					return _List_fromArray(
-						[x, x]);
-				},
-				$author$project$Main$lista)) + ' — Duplica cada elemento')
-	]);
-var $author$project$Main$boolStr = function (b) {
-	return b ? 'Sí' : 'No';
-};
-var $elm$core$List$drop = F2(
-	function (n, list) {
-		drop:
-		while (true) {
-			if (n <= 0) {
-				return list;
-			} else {
-				if (!list.b) {
-					return list;
-				} else {
-					var x = list.a;
-					var xs = list.b;
-					var $temp$n = n - 1,
-						$temp$list = xs;
-					n = $temp$n;
-					list = $temp$list;
-					continue drop;
-				}
-			}
-		}
-	});
-var $elm$core$List$head = function (list) {
-	if (list.b) {
-		var x = list.a;
-		var xs = list.b;
-		return $elm$core$Maybe$Just(x);
-	} else {
-		return $elm$core$Maybe$Nothing;
-	}
-};
-var $elm$core$List$isEmpty = function (xs) {
-	if (!xs.b) {
-		return true;
-	} else {
-		return false;
-	}
-};
-var $elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
-var $elm$core$List$member = F2(
-	function (x, xs) {
-		return A2(
-			$elm$core$List$any,
-			function (a) {
-				return _Utils_eq(a, x);
-			},
-			xs);
 	});
 var $elm$core$List$tail = function (list) {
 	if (list.b) {
@@ -5562,53 +5479,6 @@ var $elm$core$List$take = F2(
 	function (n, list) {
 		return A3($elm$core$List$takeFast, 0, n, list);
 	});
-var $author$project$Main$seccionesBasicas = _List_fromArray(
-	[
-		A2(
-		$author$project$Main$seccion,
-		'📋 Lista base',
-		$elm$core$Debug$toString($author$project$Main$lista)),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.head',
-		$elm$core$Debug$toString(
-			$elm$core$List$head($author$project$Main$lista)) + ' — Primer elemento o Nothing si está vacía'),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.tail',
-		$elm$core$Debug$toString(
-			$elm$core$List$tail($author$project$Main$lista)) + ' — Todos los elementos menos el primero'),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.length',
-		$elm$core$String$fromInt(
-			$elm$core$List$length($author$project$Main$lista)) + ' — Cantidad de elementos'),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.reverse',
-		$elm$core$Debug$toString(
-			$elm$core$List$reverse($author$project$Main$lista)) + ' — Lista al revés'),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.member 3',
-		$author$project$Main$boolStr(
-			A2($elm$core$List$member, 3, $author$project$Main$lista)) + ' — ¿Está el 3 en la lista?'),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.isEmpty',
-		$author$project$Main$boolStr(
-			$elm$core$List$isEmpty($author$project$Main$lista)) + ' — ¿Está vacía?'),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.drop 2',
-		$elm$core$Debug$toString(
-			A2($elm$core$List$drop, 2, $author$project$Main$lista)) + ' — Elimina los primeros 2'),
-		A2(
-		$author$project$Main$seccion,
-		'🔹 List.take 3',
-		$elm$core$Debug$toString(
-			A2($elm$core$List$take, 3, $author$project$Main$lista)) + ' — Toma los primeros 3')
-	]);
 var $author$project$Main$titulo = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
@@ -5619,23 +5489,127 @@ var $author$project$Main$titulo = A2(
 		[
 			$elm$html$Html$text('📘 Ejemplos de funciones de acceso a listas en Elm - Grupo Práctico 2 26')
 		]));
+var $elm$core$Debug$toString = _Debug_toString;
 var $author$project$Main$view = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
 		[
 			$elm$html$Html$Attributes$class('container')
 		]),
-	_Utils_ap(
-		_List_fromArray(
-			[$author$project$Main$titulo, $author$project$Main$integrantes]),
-		_Utils_ap(
-			$author$project$Main$seccionesBasicas,
-			_Utils_ap(
-				_List_fromArray(
-					[
-						A2($elm$html$Html$br, _List_Nil, _List_Nil)
-					]),
-				$author$project$Main$seccionesAvanzadas))));
+	_List_fromArray(
+		[
+			$author$project$Main$titulo,
+			$author$project$Main$integrantes,
+			A2(
+			$author$project$Main$seccion,
+			'📋 Lista base',
+			$elm$core$Debug$toString($author$project$Main$lista)),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.head',
+			$elm$core$Debug$toString(
+				$elm$core$List$head($author$project$Main$lista)) + ' — Primer elemento o Nothing si está vacía'),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.tail',
+			$elm$core$Debug$toString(
+				$elm$core$List$tail($author$project$Main$lista)) + ' — Todos los elementos menos el primero'),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.length',
+			$elm$core$String$fromInt(
+				$elm$core$List$length($author$project$Main$lista)) + ' — Cantidad de elementos'),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.reverse',
+			$elm$core$Debug$toString(
+				$elm$core$List$reverse($author$project$Main$lista)) + ' — Lista al revés'),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.member 3',
+			$author$project$Main$boolStr(
+				A2($elm$core$List$member, 3, $author$project$Main$lista)) + ' — ¿Está el 3 en la lista?'),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.isEmpty',
+			$author$project$Main$boolStr(
+				$elm$core$List$isEmpty($author$project$Main$lista)) + ' — ¿Está vacía?'),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.drop 2',
+			$elm$core$Debug$toString(
+				A2($elm$core$List$drop, 2, $author$project$Main$lista)) + ' — Elimina los primeros 2'),
+			A2(
+			$author$project$Main$seccion,
+			'🔹 List.take 3',
+			$elm$core$Debug$toString(
+				A2($elm$core$List$take, 3, $author$project$Main$lista)) + ' — Toma los primeros 3'),
+			A2($elm$html$Html$br, _List_Nil, _List_Nil),
+			A2(
+			$author$project$Main$seccion,
+			'🧪 List.filter (>2)',
+			$elm$core$Debug$toString(
+				A2(
+					$elm$core$List$filter,
+					function (x) {
+						return x > 2;
+					},
+					$author$project$Main$lista)) + ' — Filtra mayores a 2'),
+			A2(
+			$author$project$Main$seccion,
+			'🧪 List.map (*2)',
+			$elm$core$Debug$toString(
+				A2(
+					$elm$core$List$map,
+					function (x) {
+						return x * 2;
+					},
+					$author$project$Main$lista)) + ' — Multiplica cada uno por 2'),
+			A2(
+			$author$project$Main$seccion,
+			'🧪 List.indexedMap (i + x)',
+			$elm$core$Debug$toString(
+				A2(
+					$elm$core$List$indexedMap,
+					F2(
+						function (i, x) {
+							return i + x;
+						}),
+					$author$project$Main$lista)) + ' — Suma índice y valor'),
+			A2(
+			$author$project$Main$seccion,
+			'🧪 List.partition (>3)',
+			$elm$core$Debug$toString(
+				A2(
+					$elm$core$List$partition,
+					function (x) {
+						return x > 3;
+					},
+					$author$project$Main$lista)) + ' — Separa mayores y menores a 3'),
+			A2(
+			$author$project$Main$seccion,
+			'🧪 List.concat [[1,2],[3,4]]',
+			$elm$core$Debug$toString(
+				$elm$core$List$concat(
+					_List_fromArray(
+						[
+							_List_fromArray(
+							[1, 2]),
+							_List_fromArray(
+							[3, 4])
+						]))) + ' — Une sublistas'),
+			A2(
+			$author$project$Main$seccion,
+			'🧪 List.concatMap duplicar',
+			$elm$core$Debug$toString(
+				A2(
+					$elm$core$List$concatMap,
+					function (x) {
+						return _List_fromArray(
+							[x, x]);
+					},
+					$author$project$Main$lista)) + ' — Duplica cada elemento')
+		]));
 var $author$project$Main$main = $elm$browser$Browser$sandbox(
 	{
 		init: _Utils_Tuple0,
@@ -5649,21 +5623,3 @@ var $author$project$Main$main = $elm$browser$Browser$sandbox(
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
-
-  var app = Elm.Main.init({ node: document.getElementById("elm") });
-}
-catch (e)
-{
-  // display initialization errors (e.g. bad flags, infinite recursion)
-  var header = document.createElement("h1");
-  header.style.fontFamily = "monospace";
-  header.innerText = "Initialization Error";
-  var pre = document.getElementById("elm");
-  document.body.insertBefore(header, pre);
-  pre.innerText = e;
-  throw e;
-}
-</script>
-
-</body>
-</html>

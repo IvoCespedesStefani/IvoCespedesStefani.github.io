@@ -42,9 +42,15 @@ body {
   font-size: 1rem;
 }
 
-/* Opcional: resaltar valores si los envuelves en <span class="result"> en Elm */
+/* Resaltar valores */
 .result {
   color: #00796b;
   font-weight: 500;
   font-family: monospace;
+}
+
+/* Separador visual entre secciones */
+.section-divider {
+  margin: 1.5rem 0;
+  border-top: 1px dashed #999;
 }
