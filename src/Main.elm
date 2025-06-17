@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, div, span, text, br)
+import Html exposing (Html, br, div, span, text)
 import Html.Attributes exposing (class)
 import String
 
@@ -17,7 +17,7 @@ main =
         }
 
 
--- LISTA BASE
+-- LISTA BASE (ELM)
 
 lista : List Int
 lista =
@@ -35,6 +35,10 @@ view =
             ++ seccionesBasicas
             ++ [ br [] [] ]
             ++ seccionesAvanzadas
+            ++ [ br [] [] ]
+            ++ seccionesLispBasicas
+            ++ [ br [] [] ]
+            ++ seccionesLispAvanzadas
         )
 
 
@@ -54,7 +58,7 @@ integrantes =
         [ text "Integrantes: Ivo Cespedes Stefani, Daniela Teresita Recalde, Micaela Nataly Pawlizki, Candela Reck" ]
 
 
--- SECCIONES BÁSICAS
+-- SECCIONES BÁSICAS (ELM)
 
 seccionesBasicas : List (Html msg)
 seccionesBasicas =
@@ -70,7 +74,7 @@ seccionesBasicas =
     ]
 
 
--- SECCIONES AVANZADAS
+-- SECCIONES AVANZADAS (ELM)
 
 seccionesAvanzadas : List (Html msg)
 seccionesAvanzadas =
@@ -80,6 +84,35 @@ seccionesAvanzadas =
     , seccion "🧪 List.partition (>3)" (Debug.toString (List.partition (\x -> x > 3) lista) ++ " — Separa mayores y menores a 3")
     , seccion "🧪 List.concat [[1,2],[3,4]]" (Debug.toString (List.concat [[ 1, 2 ], [ 3, 4 ]]) ++ " — Une sublistas")
     , seccion "🧪 List.concatMap duplicar" (Debug.toString (List.concatMap (\x -> [ x, x ]) lista) ++ " — Duplica cada elemento")
+    ]
+
+
+-- SECCIONES BÁSICAS (COMMON LISP)
+
+seccionesLispBasicas : List (Html msg)
+seccionesLispBasicas =
+    [ seccion "📋 Lista base (LISP)" "(1 2 3 4 5)"
+    , seccion "🔹 car" "1 — Primer elemento o nil si está vacía"
+    , seccion "🔹 cdr" "(2 3 4 5) — Todos los elementos menos el primero"
+    , seccion "🔹 length" "5 — Cantidad de elementos"
+    , seccion "🔹 reverse" "(5 4 3 2 1) — Lista al revés"
+    , seccion "🔹 member 3" "(3 4 5) — Sublista desde el 3 (o nil si no está)"
+    , seccion "🔹 null" "nil — ¿Está vacía?"
+    , seccion "🔹 nthcdr 2" "(3 4 5) — Elimina los primeros 2 elementos"
+    , seccion "🔹 subseq 0 3" "(1 2 3) — Toma los primeros 3 elementos"
+    ]
+
+
+-- SECCIONES AVANZADAS (COMMON LISP)
+
+seccionesLispAvanzadas : List (Html msg)
+seccionesLispAvanzadas =
+    [ seccion "🧪 remove-if-not (> 2)" "(3 4 5) — Filtra mayores a 2"
+    , seccion "🧪 mapcar (* 2)" "(2 4 6 8 10) — Multiplica cada elemento por 2"
+    , seccion "🧪 mapcar (+ índice)" "(1 3 5 7 9) — Suma índice y valor"
+    , seccion "🧪 partition (> 3)" "((4 5) (1 2 3)) — Separa mayores y menores a 3"
+    , seccion "🧪 append '((1 2) (3 4))" "(1 2 3 4) — Une sublistas"
+    , seccion "🧪 mapcan duplicar" "(1 1 2 2 3 3 4 4 5 5) — Duplica cada elemento"
     ]
 
 

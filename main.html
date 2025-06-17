@@ -5609,6 +5609,27 @@ var $author$project$Main$seccionesBasicas = _List_fromArray(
 		$elm$core$Debug$toString(
 			A2($elm$core$List$take, 3, $author$project$Main$lista)) + ' — Toma los primeros 3')
 	]);
+var $author$project$Main$seccionesLispAvanzadas = _List_fromArray(
+	[
+		A2($author$project$Main$seccion, '🧪 remove-if-not (> 2)', '(3 4 5) — Filtra mayores a 2'),
+		A2($author$project$Main$seccion, '🧪 mapcar (* 2)', '(2 4 6 8 10) — Multiplica cada elemento por 2'),
+		A2($author$project$Main$seccion, '🧪 mapcar (+ índice)', '(1 3 5 7 9) — Suma índice y valor'),
+		A2($author$project$Main$seccion, '🧪 partition (> 3)', '((4 5) (1 2 3)) — Separa mayores y menores a 3'),
+		A2($author$project$Main$seccion, '🧪 append \'((1 2) (3 4))', '(1 2 3 4) — Une sublistas'),
+		A2($author$project$Main$seccion, '🧪 mapcan duplicar', '(1 1 2 2 3 3 4 4 5 5) — Duplica cada elemento')
+	]);
+var $author$project$Main$seccionesLispBasicas = _List_fromArray(
+	[
+		A2($author$project$Main$seccion, '📋 Lista base (LISP)', '(1 2 3 4 5)'),
+		A2($author$project$Main$seccion, '🔹 car', '1 — Primer elemento o nil si está vacía'),
+		A2($author$project$Main$seccion, '🔹 cdr', '(2 3 4 5) — Todos los elementos menos el primero'),
+		A2($author$project$Main$seccion, '🔹 length', '5 — Cantidad de elementos'),
+		A2($author$project$Main$seccion, '🔹 reverse', '(5 4 3 2 1) — Lista al revés'),
+		A2($author$project$Main$seccion, '🔹 member 3', '(3 4 5) — Sublista desde el 3 (o nil si no está)'),
+		A2($author$project$Main$seccion, '🔹 null', 'nil — ¿Está vacía?'),
+		A2($author$project$Main$seccion, '🔹 nthcdr 2', '(3 4 5) — Elimina los primeros 2 elementos'),
+		A2($author$project$Main$seccion, '🔹 subseq 0 3', '(1 2 3) — Toma los primeros 3 elementos')
+	]);
 var $author$project$Main$titulo = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
@@ -5635,7 +5656,21 @@ var $author$project$Main$view = A2(
 					[
 						A2($elm$html$Html$br, _List_Nil, _List_Nil)
 					]),
-				$author$project$Main$seccionesAvanzadas))));
+				_Utils_ap(
+					$author$project$Main$seccionesAvanzadas,
+					_Utils_ap(
+						_List_fromArray(
+							[
+								A2($elm$html$Html$br, _List_Nil, _List_Nil)
+							]),
+						_Utils_ap(
+							$author$project$Main$seccionesLispBasicas,
+							_Utils_ap(
+								_List_fromArray(
+									[
+										A2($elm$html$Html$br, _List_Nil, _List_Nil)
+									]),
+								$author$project$Main$seccionesLispAvanzadas))))))));
 var $author$project$Main$main = $elm$browser$Browser$sandbox(
 	{
 		init: _Utils_Tuple0,
